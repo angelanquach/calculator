@@ -10,36 +10,35 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var numberOnScreen:Double = 0;
-    var previousNumber:Double = 0;
+    
+    var outputNumber:Double = 0;
+    var previousInput:Double = 0;
     var performingMath = false;
     var decimalFlag = false;
     var operation = 0;
     
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var textField: UILabel!
     
     @IBAction func numbers(_ sender: UIButton)
     {
-        //if decimalFlag == true
-        //{
             if performingMath == true
             {
                 if decimalFlag == true
                 {
-                    label.text = label.text! + String(sender.tag-1)
+                    textField.text = textField.text! + String(sender.tag-1)
                     decimalFlag = false;
                 }
                 else
                 {
-                    label.text = String(sender.tag-1)
+                    textField.text = String(sender.tag-1)
                 }
-                numberOnScreen = Double(label.text!)!
+                outputNumber = Double(textField.text!)!
                 performingMath = false
             }
             else
             {
-                label.text = label.text! + String(sender.tag-1)
-                numberOnScreen = Double(label.text!)!
+                textField.text = textField.text! + String(sender.tag-1)
+                outputNumber = Double(textField.text!)!
             }
         //}
     }
@@ -47,35 +46,36 @@ class ViewController: UIViewController {
     @IBAction func buttons(_ sender: UIButton)
     {
         // check if number is there
-        if label.text != "" && sender.tag != 11 && sender.tag != 16
+        if textField.text != "" && sender.tag != 11 && sender.tag != 16
         {
-            previousNumber = Double(label.text!)!
+            
+            previousInput = Double(textField.text!)!
             // divide
             if sender.tag == 12
             {
-                label.text = "/"
+                textField.text = "/"
             }
             // multiply
             else if sender.tag == 13
             {
-                label.text = "*"
+                textField.text = "*"
             }
             // minus
             else if sender.tag == 14
             {
-                label.text = "-"
+                textField.text = "-"
             }
             // plus
             else if sender.tag == 15
             {
-                label.text = "+"
+                textField.text = "+"
             }
             else if sender.tag == 17
             {
                 // if text does not contain a period then add it
-                if !((label.text!).contains("."))
+                if !((textField.text!).contains("."))
                 {
-                    label.text = label.text! + "."
+                    textField.text = textField.text! + "."
                     decimalFlag = true;
                 }
             }
@@ -87,31 +87,31 @@ class ViewController: UIViewController {
         {
             if operation == 12
             {
-                label.text = String(previousNumber / numberOnScreen)
+                textField.text = String(previousInput / outputNumber)
             }
             else if operation == 13
             {
-                label.text = String(previousNumber * numberOnScreen)
+                textField.text = String(previousInput * outputNumber)
             }
             else if operation == 14
             {
-                label.text = String(previousNumber - numberOnScreen)
+                textField.text = String(previousInput - outputNumber)
             }
             else if operation == 15
             {
-                label.text = String(previousNumber + numberOnScreen)
+                textField.text = String(previousInput + outputNumber)
             }
             else if operation == 17
             {
-                label.text = String(previousNumber + (numberOnScreen * 0.1))
+                textField.text = String(previousInput + (outputNumber * 0.1))
             }
         }
         // reset everything
         else if sender.tag == 11
         {
-            label.text = ""
-            previousNumber = 0;
-            numberOnScreen = 0;
+            textField.text = ""
+            previousInput = 0;
+            outputNumber = 0;
             operation = 0;
         }
         

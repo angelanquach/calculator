@@ -1,0 +1,10 @@
+readme.txt
+angela quach
+calculator app
+
+how to use this app
+1. Open this app with Xcode. You need to use XCode, a special IDE, to emulate the calculator app.
+2. Go to the top left of the IDE and search for the play button.
+3. Press play and wait several seconds to load and the app will open on the emulated iPhone screen.
+2. Press the numbers you'd like to calculator.
+3. To use operators in a calculation, select the buttons with the plus, minus, division, subtraction, or multiplication.
